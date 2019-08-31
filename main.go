@@ -112,6 +112,7 @@ func set(inf influx.Client, bp influx.BatchPoints, exes executions.Response) err
 			"execution": &v,
 		}, time.Now().UTC())
 		if err != nil {
+			log.Error(err)
 			return err
 		}
 		bp.AddPoint(point)
@@ -119,6 +120,7 @@ func set(inf influx.Client, bp influx.BatchPoints, exes executions.Response) err
 
 	if err := inf.Write(bp); err != nil {
 		log.Error(err)
+		return err
 	}
 
 	return nil
