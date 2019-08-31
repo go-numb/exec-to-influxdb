@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"os"
 	"time"
 
@@ -85,7 +84,7 @@ Reconnect:
 			switch v.Type {
 			case jsonrpc.Executions:
 				go set(inf, bp, v.Executions)
-				fmt.Printf("%+v\n", v.Executions)
+				// fmt.Printf("%+v\n", v.Executions)
 
 			case jsonrpc.Error:
 				log.Error("websocket reconnect error, ", v.Error.Error())
